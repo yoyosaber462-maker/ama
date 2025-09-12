@@ -1,157 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> ZIAD  | Advertiser Portfolio</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sabren Mohamed - English Tutor</title>
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2a2a3f);
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
+  /* Navigation */
+  nav {
+    background: #222233;
+    padding: 1rem 0;
+    perspective: 800px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav li {
+    perspective: 600px;
+  }
+  nav a {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: #2a2a3f;
+    border-radius: 12px;
+    box-shadow:
+      0 5px 10px rgba(0,0,0,0.6),
+      inset 0 -3px 5px rgba(255,255,255,0.1);
+    transform-style: preserve-3d;
+    transition:
+      transform 0.3s cubic-bezier(0.4,0,0.2,1),
+      box-shadow 0.3s ease;
+    color: #a8c0ff;
+  }
+  nav a:hover, nav a:focus {
+    color: #fff;
+    box-shadow:
+      0 10px 20px rgba(72, 126, 255, 0.7),
+      inset 0 -5px 10px rgba(255,255,255,0.3);
+    transform: translateZ(20px) rotateX(10deg) scale(1.1);
+    outline: none;
+  }
 
+  /* Header / Homepage */
+  header {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 1rem 6rem;
+    text-align: center;
+    perspective: 900px;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #a8c0ff;
+    text-shadow:
+      0 0 10px #4a6fff,
+      0 0 20px #4a6fff;
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+  }
+  header p.intro {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: #c0c8ffcc;
+    line-height: 1.5;
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite 1.5s;
+  }
+  header .contact {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #d0d8ff;
+    letter-spacing: 0.05em;
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite 3s;
+  }
+  header .contact span {
+    display: inline-block;
+    margin: 0 1rem;
+  }
+
+  /* Booking Section */
+  section#booking {
+    background: #222233;
+    padding: 3rem 1rem 5rem;
+    perspective: 900px;
+  }
+  section#booking h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #a8c0ff;
+    text-shadow:
+      0 0 8px #4a6fff;
+  }
+  form.booking-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #1a1a2a;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    box-shadow:
+      0 15px 30px rgba(0,0,0,0.7),
+      inset 0 0 15px #4a6fff88;
+    transform-style: preserve-3d;
+    animation: float 8s ease-in-out infinite;
+  }
+  form.booking-form .form-group {
+    margin-bottom: 1.5rem;
+    perspective: 700px;
+  }
+  form.booking-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #c0c8ffcc;
+  }
+  form.booking-form input[type="text"],
+  form.booking-form input[type="email"],
+  form.booking-form input[type="date"],
+  form.booking-form input[type="time"],
+  form.booking-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    border: none;
+    background: #2a2a3f;
+    color: #e0e0e0;
+    font-size: 1rem;
+    box-shadow:
+      0 5px 10px rgba(0,0,0,0.7),
+      inset 0 -3px 5px rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+  }
+  form.booking-form input[type="text"]:focus,
+  form.booking-form input[type="email"]:focus,
+  form.booking-form input[type="date"]:focus,
+  form.booking-form input[type="time"]:focus,
+  form.booking-form textarea:focus {
+    outline: none;
+    box-shadow:
+      0 10px 20px rgba(72, 126, 255, 0.7),
+      inset 0 -5px 10px rgba(255,255,255,0.3);
+    transform: translateZ(15px) scale(1.05);
+  }
+  form.booking-form textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  form.booking-form button {
+    display: block;
+    margin: 1.5rem auto 0;
+    padding: 0.75rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(145deg, #4a6fff, #2a3fff);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow:
+      0 8px 15px rgba(74, 111, 255, 0.7),
+      inset 0 -3px 8px rgba(255,255,255,0.3);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  form.booking-form button:hover,
+  form.booking-form button:focus {
+    outline: none;
+    box-shadow:
+      0 15px 30px rgba(74, 111, 255, 0.9),
+      inset 0 -5px 15px rgba(255,255,255,0.5);
+    transform: translateZ(20px) scale(1.1) rotateX(5deg);
+  }
+  /* Validation styles */
+  .invalid {
+    border: 2px solid #ff4c4c !important;
+    box-shadow: 0 0 10px #ff4c4c !important;
+  }
+  .error-message {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateZ(0) translateY(0);
+      text-shadow:
+        0 0 10px #4a6fff,
+        0 0 20px #4a6fff;
+    }
+    50% {
+      transform: translateZ(15px) translateY(-10px);
+      text-shadow:
+        0 0 20px #7a9fff,
+        0 0 40px #7a9fff;
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
     header h1 {
-      margin: 0;
-      font-size: 2.5em;
+      font-size: 2.2rem;
     }
-
-    nav {
-      background: #222;
-      display: flex;
-      justify-content: center;
+    header p.intro {
+      font-size: 1rem;
     }
-
-    nav a {
-      color: #fff;
-      padding: 15px 20px;
-      text-decoration: none;
-      transition: background 0.3s;
+    nav ul {
+      gap: 1rem;
+      flex-wrap: wrap;
     }
-
-    nav a:hover {
-      background: #444;
+    form.booking-form {
+      padding: 1.5rem 1.5rem;
     }
-
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .services, .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-
-    footer {
-      text-align: center;
-      background: #111;
-      color: #fff;
-      padding: 20px 0;
-    }
-
-    .contact {
-      text-align: center;
-    }
-
-    .contact p {
-      font-size: 1.2em;
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-
-  <header>
-    <h1> ZIAD </h1>
-    <p>Advertising Specialist</p>
-  </header>
-
   <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
+    <ul>
+      <li><a href="#home" tabindex="1">Home</a></li>
+      <li><a href="#booking" tabindex="2">Book a Lesson</a></li>
+      <li><a href="#contact" tabindex="3">Contact</a></li>
+    </ul>
   </nav>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm ZIAD , an advertising expert with a passion for helping brands grow. I specialize in creative ad campaigns, digital media strategies, and performance marketing. I’m dedicated to delivering impactful campaigns that connect with audiences and drive real results.</p>
+  <header id="home" role="banner" aria-label="Homepage introduction">
+    <h1>Welcome to Sabreen Mohamed's English Tutoring</h1>
+    <p class="intro">
+      I am Sabreen Mohamed, an experienced English teacher dedicated to helping you improve your language skills with personalized lessons tailored to your goals.
+    </p>
+    <p class="contact" id="contact">
+      <span>📞 Phone: 01158905359</span>
+      <span>✉️ Email: example@email.com</span>
+    </p>
+  </header>
+
+  <section id="booking" aria-labelledby="booking-title">
+    <h2 id="booking-title">Book a Lesson</h2>
+    <form class="booking-form" novalidate>
+      <div class="form-group">
+        <label for="name">Name <span aria-hidden="true" style="color:#ff6b6b;">*</span></label>
+        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error" />
+        <div id="name-error" class="error-message" aria-live="polite" style="display:none;">Please enter your name.</div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email <span aria-hidden="true" style="color:#ff6b6b;">*</span></label>
+        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error" />
+        <div id="email-error" class="error-message" aria-live="polite" style="display:none;">Please enter a valid email.</div>
+      </div>
+      <div class="form-group">
+        <label for="date">Preferred Date <span aria-hidden="true" style="color:#ff6b6b;">*</span></label>
+        <input type="date" id="date" name="date" required aria-required="true" aria-describedby="date-error" />
+        <div id="date-error" class="error-message" aria-live="polite" style="display:none;">Please select a date.</div>
+      </div>
+      <div class="form-group">
+        <label for="time">Preferred Time <span aria-hidden="true" style="color:#ff6b6b;">*</span></label>
+        <input type="time" id="time" name="time" required aria-required="true" aria-describedby="time-error" />
+        <div id="time-error" class="error-message" aria-live="polite" style="display:none;">Please select a time.</div>
+      </div>
+      <div class="form-group">
+        <label for="message">Message (Optional)</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell me about your learning goals or any specific areas you'd like to focus on..."></textarea>
+      </div>
+      <button type="submit" aria-label="Submit booking form">Request Lesson</button>
+      <div id="form-success" role="alert" style="color:#4caf50; font-weight:700; margin-top:1rem; display:none;">
+        Redirecting to WhatsApp...
+      </div>
+    </form>
   </section>
 
-  <section id="services">
-    <h2>My Services</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Social Media Ads</h3>
-        <p>Facebook, Instagram, TikTok campaigns that convert views into sales.</p>
-      </div>
-      <div class="card">
-        <h3>Google Ads</h3>
-        <p>Targeted search and display ads to boost visibility and clicks.</p>
-      </div>
-      <div class="card">
-        <h3>Creative Content</h3>
-        <p>Eye-catching ad designs and videos tailored to your audience.</p>
-      </div>
-    </div>
-  </section>
+<script>
+  (function(){
+    const form = document.querySelector('.booking-form');
+    const successMsg = document.getElementById('form-success');
 
-  <section id="portfolio">
-    <h2>My Work</h2>
-    <div class="portfolio">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Ad 1">
-        <h4>Campaign for Brand A</h4>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Ad 2">
-        <h4>Instagram Growth Ads</h4>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Ad 3">
-        <h4>Google Display Strategy</h4>
-      </div>
-    </div>
-  </section>
+    // Helper to show error
+    function showError(input, message) {
+      const errorDiv = document.getElementById(input.id + '-error');
+      input.classList.add('invalid');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+    // Helper to clear error
+    function clearError(input) {
+      const errorDiv = document.getElementById(input.id + '-error');
+      input.classList.remove('invalid');
+      errorDiv.style.display = 'none';
+    }
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact">
-      <p><strong>Phone:</strong> </p>
-      <p><strong>Email:</strong>OMAR@example.com</p>
-      <p><strong>Location:</strong> Egypt</p>
-    </div>
-  </section>
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      successMsg.style.display = 'none';
 
-  <footer>
-    <p>&copy; 2025 ZIAD  | All rights reserved.</p>
-  </footer>
+      let valid = true;
 
+      // Validate Name
+      const name = form.name;
+      if (!name.value.trim()) {
+        showError(name, 'Please enter your name.');
+        valid = false;
+      } else {
+        clearError(name);
+      }
+
+      // Validate Email
+      const email = form.email;
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email.value.trim()) {
+        showError(email, 'Please enter your email.');
+        valid = false;
+      } else if (!emailPattern.test(email.value.trim())) {
+        showError(email, 'Please enter a valid email.');
+        valid = false;
+      } else {
+        clearError(email);
+      }
+
+      // Validate Date
+      const date = form.date;
+      if (!date.value) {
+        showError(date, 'Please select a date.');
+        valid = false;
+      } else {
+        clearError(date);
+      }
+
+      // Validate Time
+      const time = form.time;
+      if (!time.value) {
+        showError(time, 'Please select a time.');
+        valid = false;
+      } else {
+        clearError(time);
+      }
+
+      if (valid) {
+        // Compose WhatsApp message
+        const phoneNumber = '01158905359'; // WhatsApp number (international format recommended, e.g. '9711158905359')
+        const nameVal = encodeURIComponent(name.value.trim());
+        const emailVal = encodeURIComponent(email.value.trim());
+        const dateVal = encodeURIComponent(date.value);
+        const timeVal = encodeURIComponent(time.value);
+        const messageVal = encodeURIComponent(form.message.value.trim() || 'No additional message.');
+
+        const text = `Hello Sabreen Mohamed,%0AI would like to book an English lesson.%0A%0AName: ${nameVal}%0AEmail: ${emailVal}%0APreferred Date: ${dateVal}%0APreferred Time: ${timeVal}%0AMessage: ${messageVal}`;
+
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${text}`;
+
+        successMsg.style.display = 'block';
+
+        // Redirect after short delay so user sees message
+        setTimeout(() => {
+          window.open(whatsappURL, '_blank');
+          successMsg.style.display = 'none';
+          form.reset();
+          form.name.focus();
+        }, 1500);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
